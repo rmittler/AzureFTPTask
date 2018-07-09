@@ -1,0 +1,65 @@
+{
+    "id": "5164728d-cfca-4576-a066-bde89930bf2b",
+    "name": "CMCFileUpload",
+    "friendlyName": "CMC File Uploader",
+    "description": "Build Task that will upload a file or folder to a destination in Azure using Published Profile Credentials.",
+    "helpMarkDown": "",
+    "category": "Build",
+    "visibility": [
+        "Build"
+    ],
+    "runsOn": [
+        "Agent",
+        "DeploymentGroup"
+    ],
+    "author": "Russ Mittler",
+    "version": {
+        "Major": 0,
+        "Minor": 0,
+        "Patch": 16
+    },
+    "instanceNameFormat": "Uploads File Using Published Profile Credentials",
+    "groups": [
+        {
+            "name": "advanced",
+            "displayName": "Advanced",
+            "isExpanded": true
+        }
+    ],
+    "inputs": [
+		{
+            "name": "appdirectory",
+            "type": "filePath",
+            "label": "Source Path",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Location of file(s) for uploading to Azure."
+        },
+		{
+            "name": "webappname",
+            "type": "string",
+            "label": "Azure Webapp name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Azure App name; I.E. - 900014campuslinkapi."
+        },
+		{
+            "name": "ResourceGroupName",
+            "type": "string",
+            "label": "Azure Resource Group name",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Azure Resource Group Name I.E. - 900014-prod."
+        }
+    ],
+    "execution": {
+        "PowerShell": {
+            "target": "powershell.ps1",
+            "platforms": [
+                "windows"
+            ],
+			"argumentFormat": "",
+            "workingDirectory": "$(currentDirectory)"
+        }
+    }
+}
